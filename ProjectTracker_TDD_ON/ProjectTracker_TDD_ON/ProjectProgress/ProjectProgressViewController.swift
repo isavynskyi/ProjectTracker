@@ -26,6 +26,16 @@ class ProjectProgressViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
     }
+
+}
+
+private extension ProjectProgressViewController {
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        guard sender === progressSlider else { return }
+        
+        presenter?.progressValueDidChange(sender.value)
+    }
 }
 
 extension ProjectProgressViewController: ProjectProgressView {

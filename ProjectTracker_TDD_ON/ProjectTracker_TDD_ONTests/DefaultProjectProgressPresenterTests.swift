@@ -10,7 +10,6 @@ import XCTest
 
 class DefaultProjectProgressPresenterTests: XCTestCase {
 
-
     func test_whenViewDidLoadCalled_thenViewConfigurationMethodsCalled() {
         let viewMock = ProjectProgressViewMock()
         let sut = DefaultProjectProgressPresenter(view: viewMock)
@@ -30,5 +29,24 @@ class DefaultProjectProgressPresenterTests: XCTestCase {
         XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
         XCTAssertEqual(viewMock.updateStatusCallsHistory.first?.status, "0% (not started)")
         XCTAssertEqual(viewMock.updateStatusCallsHistory.first?.color, .systemRed)
+    }
+    
+    func test_whenProgressValueChanges_thenProgressStatusUpdated() {
+        let viewMock = ProjectProgressViewMock()
+        let sut = DefaultProjectProgressPresenter(view: viewMock)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 0)
+
+        sut.progressValueDidChange(0)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        
+        sut.progressValueDidChange(10)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 2)
+
+        sut.progressValueDidChange(90)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 3)
+
+        
+        sut.progressValueDidChange(100)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 4)
     }
 }
