@@ -27,7 +27,6 @@ class ProjectProgressViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
     }
-
 }
 
 private extension ProjectProgressViewController {

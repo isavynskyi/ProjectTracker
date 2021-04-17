@@ -68,4 +68,84 @@ class DefaultProjectProgressPresenterTests: XCTestCase {
         XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "100% (completed)")
         XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemGreen)
     }
+    
+    func test_whenProgressValueLessThanLowerBound_thenProgressStatusIsNotStarted() {
+        let viewMock = ProjectProgressViewMock()
+        let sut = DefaultProjectProgressPresenter(view: viewMock)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 0)
+
+        sut.progressValueDidChange(-10)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "0% (not started)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemRed)
+    }
+    
+    func test_whenProgressValueGreaterThanUpperBound_thenProgressStatusIsCompleted() {
+        let viewMock = ProjectProgressViewMock()
+        let sut = DefaultProjectProgressPresenter(view: viewMock)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 0)
+
+        sut.progressValueDidChange(1000)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "100% (completed)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemGreen)
+    }
+    
+    func test_whenProgressValueHasDecimalPart_thenProgressStatusIsCorrectForNotStartedState() {
+        let viewMock = ProjectProgressViewMock()
+        let sut = DefaultProjectProgressPresenter(view: viewMock)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 0)
+        
+        sut.progressValueDidChange(0.1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "0% (not started)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemRed)
+        
+        sut.progressValueDidChange(0.999)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 2)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "0% (not started)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemRed)
+    }
+    
+    func test_whenProgressValueHasDecimalPart_thenProgressStatusIsCorrectForWorkInProgressState() {
+        let viewMock = ProjectProgressViewMock()
+        let sut = DefaultProjectProgressPresenter(view: viewMock)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 0)
+        
+        sut.progressValueDidChange(1.001)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "1% (work in progress)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemYellow)
+        
+        sut.progressValueDidChange(42.99)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 2)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "42% (work in progress)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemYellow)
+        
+        sut.progressValueDidChange(99.999)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count,3)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "99% (work in progress)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemYellow)
+    }
+    
+    func test_whenProgressValueHasDecimalPart_thenProgressStatusIsCorrectForCompletedState() {
+        let viewMock = ProjectProgressViewMock()
+        let sut = DefaultProjectProgressPresenter(view: viewMock)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 0)
+        
+        sut.progressValueDidChange(100)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "100% (completed)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemGreen)
+        
+        sut.progressValueDidChange(100.01)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 2)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "100% (completed)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemGreen)
+        
+        sut.progressValueDidChange(1000.999)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count,3)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "100% (completed)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemGreen)
+    }
 }

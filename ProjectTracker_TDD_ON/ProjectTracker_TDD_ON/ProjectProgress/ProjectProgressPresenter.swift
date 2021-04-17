@@ -88,11 +88,13 @@ extension DefaultProjectProgressPresenter: ProjectProgressPresenter {
     
     func progressValueDidChange(_ newValue: Float) {
         
-        if newValue <= 0 {
+        let normalizedNewValue = newValue.rounded(.towardZero)
+        
+        if normalizedNewValue <= 0 {
             projectStatus = .notStarted
-        } else if newValue > 0 && newValue < 100 {
-            projectStatus = .inProgress(newValue)
-        } else if newValue >= 100 {
+        } else if normalizedNewValue > 0 && normalizedNewValue < 100 {
+            projectStatus = .inProgress(normalizedNewValue)
+        } else if normalizedNewValue >= 100 {
             projectStatus = .completed
         }
     }
