@@ -13,9 +13,10 @@
 		173E4959262B0D2800DE2460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 173E4957262B0D2800DE2460 /* Main.storyboard */; };
 		173E495B262B0D2800DE2460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 173E495A262B0D2800DE2460 /* Assets.xcassets */; };
 		173E495E262B0D2800DE2460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 173E495C262B0D2800DE2460 /* LaunchScreen.storyboard */; };
-		173E4969262B0D2900DE2460 /* ProjectTracker_TDD_OFFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E4968262B0D2900DE2460 /* ProjectTracker_TDD_OFFTests.swift */; };
+		173E4969262B0D2900DE2460 /* DefaultProjectStatusPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E4968262B0D2900DE2460 /* DefaultProjectStatusPresenterTests.swift */; };
 		173E4974262B0D2900DE2460 /* ProjectTracker_TDD_OFFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E4973262B0D2900DE2460 /* ProjectTracker_TDD_OFFUITests.swift */; };
 		173E4985262B0E5C00DE2460 /* ProjectStatusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E4984262B0E5C00DE2460 /* ProjectStatusPresenter.swift */; };
+		173E4994262B1D5B00DE2460 /* ProjectStatusViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E4993262B1D5B00DE2460 /* ProjectStatusViewMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,12 +46,13 @@
 		173E495D262B0D2800DE2460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		173E495F262B0D2800DE2460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		173E4964262B0D2900DE2460 /* ProjectTracker_TDD_OFFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTracker_TDD_OFFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		173E4968262B0D2900DE2460 /* ProjectTracker_TDD_OFFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTracker_TDD_OFFTests.swift; sourceTree = "<group>"; };
+		173E4968262B0D2900DE2460 /* DefaultProjectStatusPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProjectStatusPresenterTests.swift; sourceTree = "<group>"; };
 		173E496A262B0D2900DE2460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		173E496F262B0D2900DE2460 /* ProjectTracker_TDD_OFFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTracker_TDD_OFFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		173E4973262B0D2900DE2460 /* ProjectTracker_TDD_OFFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTracker_TDD_OFFUITests.swift; sourceTree = "<group>"; };
 		173E4975262B0D2900DE2460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		173E4984262B0E5C00DE2460 /* ProjectStatusPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusPresenter.swift; sourceTree = "<group>"; };
+		173E4993262B1D5B00DE2460 /* ProjectStatusViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusViewMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,8 @@
 		173E4967262B0D2900DE2460 /* ProjectTracker_TDD_OFFTests */ = {
 			isa = PBXGroup;
 			children = (
-				173E4968262B0D2900DE2460 /* ProjectTracker_TDD_OFFTests.swift */,
+				173E4968262B0D2900DE2460 /* DefaultProjectStatusPresenterTests.swift */,
+				173E4992262B1D4C00DE2460 /* Mocks */,
 				173E496A262B0D2900DE2460 /* Info.plist */,
 			);
 			path = ProjectTracker_TDD_OFFTests;
@@ -129,6 +132,14 @@
 				173E4975262B0D2900DE2460 /* Info.plist */,
 			);
 			path = ProjectTracker_TDD_OFFUITests;
+			sourceTree = "<group>";
+		};
+		173E4992262B1D4C00DE2460 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				173E4993262B1D5B00DE2460 /* ProjectStatusViewMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				173E4969262B0D2900DE2460 /* ProjectTracker_TDD_OFFTests.swift in Sources */,
+				173E4994262B1D5B00DE2460 /* ProjectStatusViewMock.swift in Sources */,
+				173E4969262B0D2900DE2460 /* DefaultProjectStatusPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

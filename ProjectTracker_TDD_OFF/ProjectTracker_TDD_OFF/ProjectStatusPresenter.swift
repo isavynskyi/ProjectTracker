@@ -90,12 +90,12 @@ extension DefaultProjectStatusPresenter: ProjectStatusPresenter {
     }
     
     func progressDidChange(_ newValue: Float) {
-        
-        if newValue <= Self.progressRange.lowerBound {
+        let normalizedValue = newValue.rounded(.towardZero)
+        if normalizedValue <= Self.progressRange.lowerBound {
             projectStatus = .notStarted
-        } else if newValue > Self.progressRange.lowerBound && newValue < Self.progressRange.upperBound {
-            projectStatus = .inProgress(newValue)
-        } else if newValue >= Self.progressRange.upperBound {
+        } else if normalizedValue > Self.progressRange.lowerBound && normalizedValue < Self.progressRange.upperBound {
+            projectStatus = .inProgress(normalizedValue)
+        } else if normalizedValue >= Self.progressRange.upperBound {
             projectStatus = .completed
         }
     }
