@@ -38,15 +38,22 @@ class DefaultProjectProgressPresenterTests: XCTestCase {
 
         sut.progressValueDidChange(0)
         XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "0% (not started)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemRed)
         
         sut.progressValueDidChange(10)
         XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 2)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "10% (work in progress)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemYellow)
 
         sut.progressValueDidChange(90)
         XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 3)
-
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "90% (work in progress)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemYellow)
         
         sut.progressValueDidChange(100)
         XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 4)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.status, "100% (completed)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.last?.color, .systemGreen)
     }
 }
