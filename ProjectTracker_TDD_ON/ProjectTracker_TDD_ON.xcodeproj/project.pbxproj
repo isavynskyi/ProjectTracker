@@ -13,7 +13,7 @@
 		1714FFBE262B347F00293756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1714FFBC262B347F00293756 /* Main.storyboard */; };
 		1714FFC0262B347F00293756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1714FFBF262B347F00293756 /* Assets.xcassets */; };
 		1714FFC3262B347F00293756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1714FFC1262B347F00293756 /* LaunchScreen.storyboard */; };
-		1714FFCE262B347F00293756 /* DefaultProjectProgressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714FFCD262B347F00293756 /* DefaultProjectProgressPresenter.swift */; };
+		1714FFCE262B347F00293756 /* DefaultProjectProgressPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714FFCD262B347F00293756 /* DefaultProjectProgressPresenterTests.swift */; };
 		1714FFED262B359500293756 /* ProjectProgressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714FFEC262B359500293756 /* ProjectProgressPresenter.swift */; };
 		1714FFFC262B374400293756 /* ProjectProgressViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714FFFB262B374400293756 /* ProjectProgressViewMock.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,7 @@
 		1714FFC2262B347F00293756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1714FFC4262B347F00293756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1714FFC9262B347F00293756 /* ProjectTracker_TDD_ONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectTracker_TDD_ONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1714FFCD262B347F00293756 /* DefaultProjectProgressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProjectProgressPresenter.swift; sourceTree = "<group>"; };
+		1714FFCD262B347F00293756 /* DefaultProjectProgressPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProjectProgressPresenterTests.swift; sourceTree = "<group>"; };
 		1714FFCF262B347F00293756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1714FFEC262B359500293756 /* ProjectProgressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectProgressPresenter.swift; sourceTree = "<group>"; };
 		1714FFFB262B374400293756 /* ProjectProgressViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectProgressViewMock.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		1714FFCC262B347F00293756 /* ProjectTracker_TDD_ONTests */ = {
 			isa = PBXGroup;
 			children = (
-				1714FFCD262B347F00293756 /* DefaultProjectProgressPresenter.swift */,
+				1714FFCD262B347F00293756 /* DefaultProjectProgressPresenterTests.swift */,
 				1714FFFA262B369300293756 /* Mocks */,
 				1714FFCF262B347F00293756 /* Info.plist */,
 			);
@@ -232,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1714FFCE262B347F00293756 /* DefaultProjectProgressPresenter.swift in Sources */,
+				1714FFCE262B347F00293756 /* DefaultProjectProgressPresenterTests.swift in Sources */,
 				1714FFFC262B374400293756 /* ProjectProgressViewMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

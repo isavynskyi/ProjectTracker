@@ -25,6 +25,6 @@ extension DefaultProjectProgressPresenter: ProjectProgressPresenter {
     func viewDidLoad() {
         view?.updateTitle("Awesome project progress")
         view?.updateSlider(0)
-        view?.updateStatus("", color: .red)
+        view?.updateStatus("0% (not started)", color: .systemRed)
     }
 }

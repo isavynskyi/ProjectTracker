@@ -22,8 +22,13 @@ class DefaultProjectProgressPresenterTests: XCTestCase {
         sut.viewDidLoad()
         
         XCTAssertEqual(viewMock.updateTitleCallsHistory.count, 1)
-        XCTAssertEqual(viewMock.updateSliderCallsHistory.count, 1)
-        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
-    }
+        XCTAssertEqual(viewMock.updateTitleCallsHistory.first, "Awesome project progress")
 
+        XCTAssertEqual(viewMock.updateSliderCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateSliderCallsHistory.first, 0)
+        
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.first?.status, "0% (not started)")
+        XCTAssertEqual(viewMock.updateStatusCallsHistory.first?.color, .systemRed)
+    }
 }
