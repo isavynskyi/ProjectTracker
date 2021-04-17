@@ -19,6 +19,8 @@ class DefaultProjectProgressPresenter {
     
     private var projectStatus: ProjectStatus = .notStarted { didSet {updateProjectStatusOnView()} }
     
+    private static let allowedProgressRange: ClosedRange<Float> = 0...100
+    
     private enum ProjectStatus {
         case notStarted
         case inProgress(Float)
@@ -45,11 +47,11 @@ class DefaultProjectProgressPresenter {
         private var progress: Float {
             switch self {
             case .notStarted:
-                return 0
+                return allowedProgressRange.lowerBound
             case .inProgress(let value):
                 return value
             case .completed:
-                return 100
+                return allowedProgressRange.upperBound
             }
         }
 
@@ -83,18 +85,18 @@ extension DefaultProjectProgressPresenter: ProjectProgressPresenter {
         view?.updateTitle("Awesome project progress")
         view?.updateSlider(0)
         view?.updateStatus(projectStatus.text, color: projectStatus.color)
-        view?.configureProgressSliderRange(0...100)
+        view?.configureProgressSliderRange(Self.allowedProgressRange)
     }
     
     func progressValueDidChange(_ newValue: Float) {
         
         let normalizedNewValue = newValue.rounded(.towardZero)
         
-        if normalizedNewValue <= 0 {
+        if normalizedNewValue <= Self.allowedProgressRange.lowerBound {
             projectStatus = .notStarted
-        } else if normalizedNewValue > 0 && normalizedNewValue < 100 {
+        } else if normalizedNewValue > Self.allowedProgressRange.lowerBound && normalizedNewValue < Self.allowedProgressRange.upperBound {
             projectStatus = .inProgress(normalizedNewValue)
-        } else if normalizedNewValue >= 100 {
+        } else if normalizedNewValue >= Self.allowedProgressRange.upperBound {
             projectStatus = .completed
         }
     }
