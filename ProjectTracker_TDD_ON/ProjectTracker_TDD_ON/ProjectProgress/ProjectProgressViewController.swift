@@ -11,6 +11,7 @@ protocol ProjectProgressView: AnyObject {
     func updateTitle(_ title: String)
     func updateSlider(_ value: Float)
     func updateStatus(_ status: String, color: UIColor)
+    func configureProgressSliderRange(_ range: ClosedRange<Float>)
 }
 
 class ProjectProgressViewController: UIViewController {
@@ -51,6 +52,11 @@ extension ProjectProgressViewController: ProjectProgressView {
     func updateStatus(_ status: String, color: UIColor) {
         statusLabel.text = status
         statusLabel.textColor = color
+    }
+    
+    func configureProgressSliderRange(_ range: ClosedRange<Float>) {
+        progressSlider.minimumValue = range.lowerBound
+        progressSlider.maximumValue = range.upperBound
     }
 }
 

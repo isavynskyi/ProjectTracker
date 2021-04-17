@@ -31,6 +31,18 @@ class DefaultProjectProgressPresenterTests: XCTestCase {
         XCTAssertEqual(viewMock.updateStatusCallsHistory.first?.color, .systemRed)
     }
     
+    func test_whenViewDidLoadCalled_thenProgressSliderRangeConfgurationCalled() {
+        let viewMock = ProjectProgressViewMock()
+        let sut = DefaultProjectProgressPresenter(view: viewMock)
+        
+        XCTAssertEqual(viewMock.configureProgressSliderRangeCallsHistory.count, 0)
+        
+        sut.viewDidLoad()
+        
+        XCTAssertEqual(viewMock.configureProgressSliderRangeCallsHistory.count, 1)
+        XCTAssertEqual(viewMock.configureProgressSliderRangeCallsHistory.first, 0...100)
+    }
+    
     func test_whenProgressValueChanges_thenProgressStatusUpdated() {
         let viewMock = ProjectProgressViewMock()
         let sut = DefaultProjectProgressPresenter(view: viewMock)

@@ -25,4 +25,9 @@ class ProjectProgressViewMock: ProjectProgressView {
     func updateStatus(_ status: String, color: UIColor) {
         updateStatusCallsHistory.append((status: status, color: color))
     }
+    
+    private(set) var configureProgressSliderRangeCallsHistory: [ClosedRange<Float>] = []
+    func configureProgressSliderRange(_ range: ClosedRange<Float>) {
+        configureProgressSliderRangeCallsHistory.append(range)
+    }
 }

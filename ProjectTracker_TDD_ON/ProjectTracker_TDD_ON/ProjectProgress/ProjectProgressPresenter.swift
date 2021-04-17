@@ -83,6 +83,7 @@ extension DefaultProjectProgressPresenter: ProjectProgressPresenter {
         view?.updateTitle("Awesome project progress")
         view?.updateSlider(0)
         view?.updateStatus(projectStatus.text, color: projectStatus.color)
+        view?.configureProgressSliderRange(0...100)
     }
     
     func progressValueDidChange(_ newValue: Float) {
